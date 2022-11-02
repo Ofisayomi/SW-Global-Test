@@ -1,0 +1,62 @@
+<div class="container-fluid" style="min-height: fit-content;">
+  <div class="col-4">
+    <form>
+    <div class="form-group">
+      <h3>User Login</h3>
+      <label for="txtEmail"></label>
+      <input type="email"
+        class="form-control" #email name="txtEmail" id="txtEmail" aria-describedby="helpId" placeholder="Email">
+      <small id="helpId" class="form-text text-muted"></small>
+      <div class="form-group">
+        <label for="txtPassword"></label>
+        <input type="password" #password class="form-control" name="txtPassword" id="txtPassword" placeholder="Password">
+      </div>
+
+      <button type="button" (click)="login(email.value, password.value)" class="btn btn-primary btn-lg">Login</button>
+      <a (click)="openModal(template)" style="color:blue">Sign Up</a>
+
+
+    </div>
+  </form>
+  </div>
+  <div class="col-8" id="background-side" style="background-image: url('../../assets/Library-Management.jpg');"></div>
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Sign Up</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="First Name" aria-label="firstName" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Last Name" aria-label="lastName" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+      <input type="number" class="form-control" placeholder="Phone Number" aria-label="Name" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+      <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+      <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+      <!-- <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">
+          <i class="fa fa-lock"></i>
+        </span>
+      </div> -->
+      <input type="password" class="form-control" placeholder="Password confirmation" aria-label="Password confirmation" aria-describedby="basic-addon1">
+    </div>
+    <button type="submit" name="commit" class="btn btn-primary btn-lg btn-block">
+      <span>Signup <i class="fa fa-sign-in"></i></span>
+    </button>
+  </div>
+</ng-template>
+</div>
+
+
+

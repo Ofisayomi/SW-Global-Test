@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "y6ndmKIgzpz5dOe90zLQArh1KfTIzrBhzRUYlVhkucZqH9h2pGo6CKf9wFjL3pCkmaCzrFA/l3Z/LDy+ylQ8QQ==",
+  "success": true,
+  "projectFilePath": "/home/ofisayomi/Documents/workspace/SW Global Task/interview-test/interview-test.csproj",
+  "expectedPackageFiles": [
+    "/home/ofisayomi/.nuget/packages/microsoft.aspnetcore.spaproxy/6.0.9/microsoft.aspnetcore.spaproxy.6.0.9.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,14 @@
+<div class="container">
+  <h3>Books</h3>
+  <div class="row">
+  <div class="col-3" *ngFor="let item of books" style="">
+    <img style="max-width: 200px; height:auto; text-align: center;" src="../../assets/Library-Management.jpg"><br>
+    <label style="font-weight: bold;margin-top: 10px;">Book Title: </label>&nbsp;&nbsp;<label>{{ item.bookTitle }}</label><br>
+    <label style="font-weight: bold;">Author: </label>&nbsp;&nbsp;<label>{{ item.bookAuthor }}</label><br>
+    <div>
+    <a *ngIf="item.checkOut" style="margin: 20px" name="" id="" class="btn btn-primary" href="#" role="button">Check In</a>
+    <a *ngIf="!item.checkOut" name="" id="" class="btn btn-primary" href="#" role="button">Check Out</a>
+  </div>
+</div>
+  </div>
+</div>

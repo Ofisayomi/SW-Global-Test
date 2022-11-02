@@ -1,0 +1,161 @@
+<div class="container-fluid">
+  <h3>Books Management</h3><br>
+  <button id="btnUpload" class="btn btn-primary"(click)="openModal(addBook)" type="button">Upload Book +</button>
+  <div class="btn-group-toggle" data-toggle="buttons">
+    <label class="btn btn-light">
+      <input #filter (change)="filterBooks(filter.checked)" type="checkbox"> Checked Out Books Only
+    </label>
+  </div>
+  <table class="table table-primary table-light">
+    <thead class="thead-light">
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>ISBN</th>
+        <th>Revision Number</th>
+        <th>Pub. Date</th>
+        <th>Publisher</th>
+        <th>Date Added</th>
+        <th>Genre</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of filteredBooks">
+        <td>{{ item.bookTitle }}</td>
+        <td>{{ item.bookAuthor }}</td>
+        <td>{{ item.bookISBN }}</td>
+        <td>{{ item.revisionNumber }}</td>
+        <td>{{ item.pubDate | date}}</td>
+        <td>{{ item.publisher }}</td>
+        <td>{{ item.dateAdded | date }}</td>
+        <td>{{ item.genre }}</td>
+        <td><button class="btn btn-primary"(click)="openEditModal(template, item.bookISBN)" type="button">Edit Book</button>
+          <button *ngIf="item.checkOut" style="border-color: black;border-style: solid;" class="btn btn-debug"(click)="openCheckOutModal(checkOutModal, item.checkDetails)" type="button">Reader Details</button>
+        </td>
+
+      </tr>
+    </tbody>
+    <!-- <tfoot>
+      <tr>
+        <th>#</th>
+      </tr>
+    </tfoot> -->
+  </table>
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Edit Book</h4>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" [value]="book?.bookTitle" placeholder="Book Title" aria-label="title" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" [value]="book?.bookISBN" placeholder="Book ISBN" aria-label="isbn" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <input type="number" class="form-control" [value]="book?.revisionNumber" placeholder="Revision Number" aria-label="Name" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <input type="date" class="form-control" [value]="book?.pubDate" placeholder="Published Date" aria-label="publisheddate" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" [value]="book?.publisher" placeholder="Publisher" aria-label="publisher" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" [value]="book?.bookAuthor" placeholder="Author" aria-label="Author" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" [value]="book?.dateAdded" placeholder="Date Added" aria-label="dateAdded" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" [value]="book?.genre" placeholder="Genre" aria-label="genre" aria-describedby="basic-addon1">
+      </div>
+      <label>Cover Page Image</label>
+      <div class="input-group mb-3">
+        <img #imgPicture style="height: 150px;width:auto" src="../../assets/Library-Management.jpg"/>
+      </div>
+      <div class="input-group mb-3">
+        <input type="file" #file2 (change)="readURL(file2, imgPicture)" class="form-control" placeholder="Phone Number" aria-label="Name" aria-describedby="basic-addon1">
+      </div>
+      <button type="submit" name="commit" class="btn btn-primary btn-lg btn-block">
+        <span>Save Changes <i class="fa fa-sign-in"></i></span>
+      </button>
+    </div>
+  </ng-template>
+  <ng-template #addBook>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Upload Book</h4>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Book Title" aria-label="title" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Book ISBN" aria-label="isbn" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <input type="number" class="form-control" placeholder="Revision Number" aria-label="Name" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <input type="date" class="form-control" placeholder="Published Date" aria-label="publisheddate" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Publisher" aria-label="publisher" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Author" aria-label="Author" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Date Added" aria-label="dateAdded" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Genre" aria-label="genre" aria-describedby="basic-addon1">
+      </div>
+      <label>Cover Page Image</label>
+      <div class="input-group mb-3">
+        <img #imgPicture style="height: 150px;width:auto" src="../../assets/Library-Management.jpg"/>
+      </div>
+      <div class="input-group mb-3">
+        <input type="file" #file (change)="readURL(file, imgPicture)" class="form-control" placeholder="Phone Number" aria-label="Name" aria-describedby="basic-addon1">
+      </div>
+      <button type="submit" name="commit" class="btn btn-primary btn-lg btn-block">
+        <span>Save Changes <i class="fa fa-sign-in"></i></span>
+      </button>
+    </div>
+  </ng-template>
+
+  <ng-template #checkOutModal>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Book Check Out Details</h4>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div><label style="font-weight: bold;">Reader Name: </label> &nbsp;&nbsp;&nbsp;
+      <span>{{ checkOutDetails?.readerName }}</span>
+    </div><br>
+    <div><label style="font-weight: bold;">Reader Phone Number: </label> &nbsp;&nbsp;&nbsp;
+      <span>{{ checkOutDetails?.readerPhoneNumber }}</span>
+    </div>
+    <br>
+    <div><label style="font-weight: bold;">Checked Out Date: </label> &nbsp;&nbsp;&nbsp;
+      <span>{{ checkOutDetails?.checkedOutDate| date }}</span>
+    </div><br>
+    <div><label style="font-weight: bold;">Expected Check In Date: </label> &nbsp;&nbsp;&nbsp;
+      <span>{{ checkOutDetails?.expectedCheckInDate| date }}</span>
+    </div>
+    <br>
+    <div><label style="font-weight: bold;">Expected Check In Date: </label> &nbsp;&nbsp;&nbsp;
+      <span>{{ checkOutDetails?.daysRemaining }}</span>
+    </div>
+    </div>
+  </ng-template>
+</div>
